@@ -4,9 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+var session = require('express-session');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+var googleStrategy = require('passport-google-oauth');
+var facebookStrategy = require('passport-facebook');
+var multer = require('multer');
+var upload = multer({dest: './uploads'});
+var connectFlash = require('connect-flash');
+var expressValidator = require('express-validator');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var caRouter = require('./routes/ca');
 
 var app = express();
 
@@ -26,8 +36,45 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Session management
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//Validator
+app.use(expressValidator({
+    errorFormatter: function(param, msg, value) {
+        var namespace = param.split('.')
+            , root    = namespace.shift()
+            , formParam = root;
+
+        while(namespace.length) {
+            formParam += '[' + namespace.shift() + ']';
+        }
+        return {
+            param : formParam,
+            msg   : msg,
+            value : value
+        };
+    }
+}));
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/ca', caRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

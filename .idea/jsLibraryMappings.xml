@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{@types/express, bootstrap, html5shiv, jquery-3.3.1.slim, popper, respond}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
+    <includedPredefinedLibrary name="Nashorn" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

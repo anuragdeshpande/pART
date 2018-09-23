@@ -12,6 +12,21 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "node-sass-middleware": "0.11.0",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "node-auth": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport-facebook": "latest",
+    "passport-google-oauth": "latest",
+    "passport-http": "latest",
+    "multer": "latest",
+    "express-validator": "latest",
+    "mongoose": "latest",
+    "mongodb": "latest",
+    "connect-flash": "latest",
+    "express-session": "latest",
+    "express-messages": "latest",
+    "request": "latest",
+    "rally": "latest"
   }
 }
