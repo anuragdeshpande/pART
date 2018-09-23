@@ -27,6 +27,7 @@
     "express-session": "latest",
     "express-messages": "latest",
     "request": "latest",
-    "rally": "latest"
+    "rally": "latest",
+    "jade-bootstrap-action": "latest"
   }
 }

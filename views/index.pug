@@ -1,8 +1,15 @@
-extends layout
+extends ../public/assets/_bootstrap
 
-block content
-    a(href="/signup") signup
-
+block body
+    .container
+        .jumbotron
+            h1.display-4 Hey There!
+            p.lead
+            |   Welcome to <b>pART</b> a project that will help you for everything ART
+            hr.my-4
+            p
+                | This project lets you control your rally workspace and your ART notifications.
+            +a-btn-primary("/signup") Sign Up Now!
 
     //if response
     //    for name in response

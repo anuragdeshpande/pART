@@ -1,5 +1,34 @@
-extends layout
+extends ../public/assets/_bootstrap
+block append styles
+    link(rel="stylesheet" href="/assets/css/pages/signup.css")
+block body
+    .container-signup
+        .backbox
+            .loginMsg
+                .textcontent
+                    p.title Don&apos;t have an account?
+                    p Sign up to save all your graph.
+                    button#switch1 Sign Up
+            .signupMsg.visibility
+                .textcontent
+                    p.title Have an account?
+                    p Log in to see all your collection.
+                    button#switch2 LOG IN
+        .frontbox
+            .login
+                h2 LOG IN
+                .inputbox
+                    input(type='text' name='email' placeholder='  EMAIL')
+                    input(type='password' name='password' placeholder='  PASSWORD')
+                p FORGET PASSWORD?
+                button LOG IN
+            .signup.hide
+                h2 SIGN UP
+                .inputbox
+                    input(type='text' name='fullname' placeholder='  FULLNAME')
+                    input(type='text' name='email' placeholder='  Work EMail')
+                    input(type='password' name='password' placeholder='  PASSWORD')
+                button SIGN UP
 
-block content
-    p
-    |   sign up here
+block append scripts
+    script(src="/assets/js/signup.js")
