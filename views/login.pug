@@ -1,0 +1,32 @@
+extends ../public/assets/_bootstrap
+block body
+    .login-page
+        .page-header.header-filter(filter-color='black')
+            .page-header-image(style='background-image:url(/assets/img/login.jpg)')
+            .content
+                .container
+                    .col-md-5.ml-auto.mr-auto
+                        .card.card-login.card-plain
+                            form.form(method='' action='')
+                                .card-header.text-center
+                                    .logo-container
+                                        img(src='/assets/img/now-logo.png' alt='')
+                                .card-body
+                                    .input-group.no-border.input-lg
+                                        .input-group-prepend
+                                            span.input-group-text
+                                                i.now-ui-icons.users_circle-08
+                                        input.form-control(type='text' placeholder='First Name...')
+                                    .input-group.no-border.input-lg
+                                        .input-group-prepend
+                                            span.input-group-text
+                                                i.now-ui-icons.text_caps-small
+                                        input.form-control(type='text' placeholder='Last Name...')
+                                .card-footer.text-center
+                                    a.btn.btn-primary.btn-round.btn-lg.btn-block(href='#pablo') Get Started
+                                .pull-left
+                                    h6
+                                        a.link.footer-link(href='#pablo') Create Account
+                                .pull-right
+                                    h6
+                                        a.link.footer-link(href='#pablo') Need Help?
