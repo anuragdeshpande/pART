@@ -134,6 +134,9 @@ mixin submit(caption,style)
 	- var type = (typeof style === 'undefined') ? "default" : style
 	input.btn(class=`btn-${type}`,type="submit",value=caption)
 
+mixin submit-primary-lg-block(caption)
+	input.btn.btn-primary.btn-round.btn-lg.btn-block(type="submit", value=caption)
+
 mixin submit-primary(caption)
 	+submit(caption,"primary")
 	

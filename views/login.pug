@@ -7,26 +7,18 @@ block body
                 .container
                     .col-md-5.ml-auto.mr-auto
                         .card.card-login.card-plain
-                            form.form(method='' action='')
+                            form.form(method='post' action='/login')
                                 .card-header.text-center
                                     .logo-container
                                         img(src='/assets/img/now-logo.png' alt='')
                                 .card-body
-                                    .input-group.no-border.input-lg
-                                        .input-group-prepend
-                                            span.input-group-text
-                                                i.now-ui-icons.users_circle-08
-                                        input.form-control(type='text' placeholder='First Name...')
-                                    .input-group.no-border.input-lg
-                                        .input-group-prepend
-                                            span.input-group-text
-                                                i.now-ui-icons.text_caps-small
-                                        input.form-control(type='text' placeholder='Last Name...')
+                                    +input-icon-left()(id = "username" name="username" placeholder="Username" class="users_circle-08")
+                                    +input-icon-left()(id = "password" name="password" placeholder="Password" class="objects_key-25" type="password")
                                 .card-footer.text-center
-                                    a.btn.btn-primary.btn-round.btn-lg.btn-block(href='#pablo') Get Started
+                                   +submit-primary-lg-block("Login")
                                 .pull-left
                                     h6
                                         a.link.footer-link(href='#pablo') Create Account
                                 .pull-right
                                     h6
-                                        a.link.footer-link(href='#pablo') Need Help?
+                                        a.link.footer-link(href='#pablo') Forgot Password?
