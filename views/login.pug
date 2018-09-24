@@ -2,7 +2,7 @@ extends ../public/assets/_bootstrap
 block body
     .login-page
         .page-header.header-filter(filter-color='black')
-            .page-header-image(style='background-image:url(/assets/img/login.jpg)')
+            .page-header-image(style='background-image:url(/assets/img/bg22.jpg)')
             .content
                 .container
                     .col-md-5.ml-auto.mr-auto
@@ -12,13 +12,13 @@ block body
                                     .logo-container
                                         img(src='/assets/img/now-logo.png' alt='')
                                 .card-body
-                                    +input-icon-left()(id = "username" name="username" placeholder="Username" class="users_circle-08")
+                                    +input-icon-left()(id = "email" name="email" placeholder="Work Email" class="users_single-02")
                                     +input-icon-left()(id = "password" name="password" placeholder="Password" class="objects_key-25" type="password")
                                 .card-footer.text-center
                                    +submit-primary-lg-block("Login")
                                 .pull-left
                                     h6
-                                        a.link.footer-link(href='#pablo') Create Account
+                                        a.link.footer-link(href='/signup') Create Account
                                 .pull-right
                                     h6
                                         a.link.footer-link(href='#pablo') Forgot Password?

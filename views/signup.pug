@@ -1,34 +1,22 @@
 extends ../public/assets/_bootstrap
-block append styles
-    link(rel="stylesheet" href="/assets/css/pages/signup.css")
 block body
-    .container-signup
-        .backbox
-            .loginMsg
-                .textcontent
-                    p.title Don&apos;t have an account?
-                    p Sign up to save all your graph.
-                    button#switch1 Sign Up
-            .signupMsg.visibility
-                .textcontent
-                    p.title Have an account?
-                    p Log in to see all your collection.
-                    button#switch2 LOG IN
-        .frontbox
-            .login
-                h2 LOG IN
-                .inputbox
-                    input(type='text' name='email' placeholder='  EMAIL')
-                    input(type='password' name='password' placeholder='  PASSWORD')
-                p FORGET PASSWORD?
-                button LOG IN
-            .signup.hide
-                h2 SIGN UP
-                .inputbox
-                    input(type='text' name='fullname' placeholder='  FULLNAME')
-                    input(type='text' name='email' placeholder='  Work EMail')
-                    input(type='password' name='password' placeholder='  PASSWORD')
-                button SIGN UP
-
-block append scripts
-    script(src="/assets/js/signup.js")
+    .login-page
+        .page-header.header-filter(filter-color='black')
+            .page-header-image(style='background-image:url(/assets/img/bg22.jpg)')
+            .content
+                .container
+                    .col-md-5.ml-auto.mr-auto
+                        .card.card-login.card-plain
+                            form.form(method='post' action='/login')
+                                .card-header.text-center
+                                    .logo-container
+                                        img(src='/assets/img/now-logo.png' alt='')
+                                .card-body
+                                    +input-icon-left()(id = "email" name="email" placeholder="Work Email" class="users_single-02")
+                                    +input-icon-left()(id = "password" name="password" placeholder="Password" class="objects_key-25" type="password")
+                                    +input-icon-left()(id = "confirmPassword" name="confirmPassword" placeholder="Confirm Password" class="objects_key-25" type="password")
+                                .card-footer.text-center
+                                    +submit-primary-lg-block("Sign Up")
+                                .pull-center
+                                    h6
+                                        a.link.footer-link(href='/login') Already Have Account? Login
