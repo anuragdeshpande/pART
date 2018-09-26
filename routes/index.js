@@ -15,7 +15,12 @@ router.get('/login', function(req, res, next){
 });
 
 router.post('/login', function(req, res, next){
-   res.render('dashboard') ;
+   res.redirect('/dashboard') ;
 });
+
+router.get('/dashboard', function (req, res, next) {
+    res.render('landing');
+});
+
 
 module.exports = router;
