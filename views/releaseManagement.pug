@@ -1,0 +1,14 @@
+extends ../public/assets/_dashboard
+block variables
+    - var isReleaseManagementActive = true
+    - var pageName = "Release Management"
+    - var isHeaderLarge = true
+
+block pageChart
+    canvas#bigDashboardChart
+
+block pageContent
+    +pillBox()
+        +pillBoxCard()(cardSize = 4, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
+        +pillBoxCard()(cardSize = 4, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
+        +pillBoxCard-smallIcon(cardSize = 4, iconColor = "icon-success", iconName = "icon-apartment", cardTitle = "Today Revenue", cardValue = "3,521", valueIcon = "$")

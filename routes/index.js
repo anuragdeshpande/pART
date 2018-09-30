@@ -18,6 +18,11 @@ router.post('/login', function(req, res, next){
    res.redirect('/dashboard') ;
 });
 
+router.get('/releaseManagement', function (req, res, next) {
+    res.render('releaseManagement')
+});
+
+
 router.get('/dashboard', function (req, res, next) {
     res.render('landing');
 });

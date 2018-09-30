@@ -1,329 +1,248 @@
-extends _bootstrap
-block append styles
-    link(rel="stylesheet", href="assets/css/now-ui-dashboard.css")
-
-block body
-    .sidebar-mini
-        .wrapper
-            .sidebar(data-color='blue')
-                //
-                  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-                +projectLogo()
-                .sidebar-wrapper
-                    +userIcon()(userImg = '../assets/img/james.jpg', userName = 'Anurag Deshpande')
-                        +menu()
-                            +menuItem-miniIcon(linkName = "My Profile", redirectionURL = "#", isActive = false, iconText = "MP")
-                            +menuItem-miniIcon(linkName = "Edit Profile", redirectionURL = "#", isActive = false, iconText = "EP")
-                            +menuItem-miniIcon(linkName = "Settings", redirectionURL = "#", isActive = false, iconText = "S")
-                    +menu
-                        +menuItem()(linkName = 'Dashboard', redirectionURL = '/dashboard', isActive = true, isSubMenu = false, class = "icon-apartment")
-                        +subMenu()(linkName = "Pages", subMenuID = "PagesDropDown")
-                            +menuItem-miniIcon(linkName = "Pricing", redirectionURL = "#", isActive = false, iconText = "P")
-                            +menuItem-miniIcon(linkName = "RTL Support", redirectionURL = "#", isActive = false, iconText = "RS")
-                            +menuItem-miniIcon(linkName = "Timeline", redirectionURL = "#", isActive = false, iconText = "T")
-                            +menuItem-miniIcon(linkName = "Login", redirectionURL = "#", isActive = false, iconText = "L")
-                            +menuItem-miniIcon(linkName = "Register", redirectionURL = "#", isActive = false, iconText = "R")
-                            +menuItem-miniIcon(linkName = "Lock Screen", redirectionURL = "#", isActive = false, iconText = "LS")
-                            +menuItem-miniIcon(linkName = "User Profile", redirectionURL = "#", isActive = false, iconText = "UP")
-            .main-panel
-                // Navbar
-                nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.bg-primary
-                    .container-fluid
-                        .navbar-wrapper
-                            .navbar-toggle
-                                button.navbar-toggler(type='button')
-                                    span.navbar-toggler-bar.bar1
-                                    span.navbar-toggler-bar.bar2
-                                    span.navbar-toggler-bar.bar3
-                            a.navbar-brand(href='#pablo') Dashboard
-                        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navigation' aria-controls='navigation-index' aria-expanded='false' aria-label='Toggle navigation')
-                            span.navbar-toggler-bar.navbar-kebab
-                            span.navbar-toggler-bar.navbar-kebab
-                            span.navbar-toggler-bar.navbar-kebab
-                        #navigation.collapse.navbar-collapse.justify-content-end
-                            form
-                                .input-group.no-border
-                                    input.form-control(type='text' value='' placeholder='Search...')
-                                    .input-group-append
-                                        .input-group-text
-                                            i.now-ui-icons.ui-1_zoom-bold
-                            ul.navbar-nav
-                                li.nav-item
-                                    a.nav-link(href='#pablo')
-                                        i.now-ui-icons.media-2_sound-wave
-                                        p
-                                            span.d-lg-none.d-md-block Stats
-                                li.nav-item.dropdown
-                                    a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='http://example.com' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                                        i.now-ui-icons.location_world
-                                        p
-                                            span.d-lg-none.d-md-block Some Actions
-                                    .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
-                                        a.dropdown-item(href='#') Action
-                                        a.dropdown-item(href='#') Another action
-                                        a.dropdown-item(href='#') Something else here
-                                li.nav-item
-                                    a.nav-link(href='#pablo')
-                                        i.now-ui-icons.users_single-02
-                                        p
-                                            span.d-lg-none.d-md-block Account
-                // End Navbar
-                .panel-header.panel-header-lg
-                    canvas#bigDashboardChart
-                .content
-                    +pillBox()
-                        +pillBoxCard()(cardSize = 3, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
-                        +pillBoxCard-smallIcon(cardSize = 3, iconColor = "icon-success", iconName = "icon-apartment", cardTitle = "Today Revenue", cardValue = "3,521", valueIcon = "$")
-                        +pillBoxCard()(cardSize = 3, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
-                        +pillBoxCard-smallIcon(cardSize = 3, iconColor = "icon-success", iconName = "icon-apartment", cardTitle = "Today Revenue", cardValue = "3,521", valueIcon = "$")
-                    .row
-                        .col-lg-4.col-md-6
-                            .card.card-chart
-                                .card-header
-                                    h5.card-category Active Users
-                                    h2.card-title 34,252
-                                    .dropdown
-                                        button.btn.btn-round.btn-default.dropdown-toggle.btn-simple.btn-icon.no-caret(type='button' data-toggle='dropdown')
-                                            i.now-ui-icons.loader_gear
-                                        .dropdown-menu.dropdown-menu-right
-                                            a.dropdown-item(href='#') Action
-                                            a.dropdown-item(href='#') Another action
-                                            a.dropdown-item(href='#') Something else here
-                                            a.dropdown-item.text-danger(href='#') Remove Data
-                                .card-body
-                                    .chart-area
-                                        canvas#activeUsers
-                                    .table-responsive
-                                        table.table
-                                            tbody
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/US.png')
-                                                    td USA
-                                                    td.text-right
-                                                        | 2.920
-                                                    td.text-right
-                                                        | 53.23%
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/DE.png')
-                                                    td Germany
-                                                    td.text-right
-                                                        | 1.300
-                                                    td.text-right
-                                                        | 20.43%
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/AU.png')
-                                                    td Australia
-                                                    td.text-right
-                                                        | 760
-                                                    td.text-right
-                                                        | 10.35%
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/GB.png')
-                                                    td United Kingdom
-                                                    td.text-right
-                                                        | 690
-                                                    td.text-right
-                                                        | 7.87%
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/RO.png')
-                                                    td Romania
-                                                    td.text-right
-                                                        | 600
-                                                    td.text-right
-                                                        | 5.94%
-                                                tr
-                                                    td
-                                                        .flag
-                                                            img(src='../assets/img/BR.png')
-                                                    td Brasil
-                                                    td.text-right
-                                                        | 550
-                                                    td.text-right
-                                                        | 4.34%
-                                .card-footer
-                                    .stats
-                                        i.now-ui-icons.arrows-1_refresh-69
-                                        |  Just Updated
-                        .col-lg-4.col-md-6
-                            .card.card-chart
-                                .card-header
-                                    h5.card-category Summer Email Campaign
-                                    h2.card-title 55,300
-                                    .dropdown
-                                        button.btn.btn-round.btn-default.dropdown-toggle.btn-simple.btn-icon.no-caret(type='button' data-toggle='dropdown')
-                                            i.now-ui-icons.loader_gear
-                                        .dropdown-menu.dropdown-menu-right
-                                            a.dropdown-item(href='#') Action
-                                            a.dropdown-item(href='#') Another action
-                                            a.dropdown-item(href='#') Something else here
-                                            a.dropdown-item.text-danger(href='#') Remove Data
-                                .card-body
-                                    .chart-area
-                                        canvas#emailsCampaignChart
-                                    .card-progress
-                                        .progress-container
-                                            span.progress-badge Delivery Rate
-                                            .progress
-                                                .progress-bar(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 90%;')
-                                                    span.progress-value 90%
-                                        .progress-container.progress-success
-                                            span.progress-badge Open Rate
-                                            .progress
-                                                .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 60%;')
-                                                    span.progress-value 60%
-                                        .progress-container.progress-info
-                                            span.progress-badge Click Rate
-                                            .progress
-                                                .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 12%;')
-                                                    span.progress-value 12%
-                                        .progress-container.progress-warning
-                                            span.progress-badge Hard Bounce
-                                            .progress
-                                                .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 5%;')
-                                                    span.progress-value 5%
-                                        .progress-container.progress-danger
-                                            span.progress-badge Spam Report
-                                            .progress
-                                                .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 0.11%;')
-                                                    span.progress-value 0.11%
-                                .card-footer
-                                    .stats
-                                        i.now-ui-icons.arrows-1_refresh-69
-                                        |  Just Updated
-                        .col-lg-4.col-md-6
-                            .card.card-chart
-                                .card-header
-                                    h5.card-category Active Countries
-                                    h2.card-title 105
-                                .card-body
-                                    .chart-area
-                                        canvas#activeCountries
-                                    #worldMap.map
-                                .card-footer
-                                    .stats
-                                        i.now-ui-icons.ui-2_time-alarm
-                                        |  Last 7 days
-                    .row
-                        .col-md-12
-                            .card
-                                .card-header
-                                    h4.card-title  Best Selling Products
-                                .card-body
-                                    .table-responsive
-                                        table.table.table-shopping
-                                            thead
-                                                th.text-center
-                                                th
-                                                    | Product
-                                                th
-                                                    | Color
-                                                th
-                                                    | Size
-                                                th.text-right
-                                                    | Price
-                                                th.text-right
-                                                    | Qty
-                                                th.text-right
-                                                    | Amount
-                                            tbody
-                                                tr
-                                                    td
-                                                        .img-container
-                                                            img(src='../assets/img/saint-laurent.jpg' alt='...')
-                                                    td.td-name
-                                                        a(href='#jacket') Suede Biker Jacket
-                                                        br
-                                                        small by Saint Laurent
-                                                    td
-                                                        | Black
-                                                    td
-                                                        | M
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 3,390
-                                                    td.td-number
-                                                        | 1
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 549
-                                                tr
-                                                    td
-                                                        .img-container
-                                                            img(src='../assets/img/balmain.jpg' alt='...')
-                                                    td.td-name
-                                                        a(href='#pants') Jersey T-Shirt
-                                                        br
-                                                        small by Balmain
-                                                    td
-                                                        | Black
-                                                    td
-                                                        | M
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 499
-                                                    td.td-number
-                                                        | 2
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 998
-                                                tr
-                                                    td
-                                                        .img-container
-                                                            img(src='../assets/img/prada.jpg' alt='...')
-                                                    td.td-name
-                                                        a(href='#nothing') Slim-Fit Swim Short
-                                                        br
-                                                        small by Prada
-                                                    td
-                                                        | Red
-                                                    td
-                                                        | M
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 200
-                                                    td.td-number
-                                                        | 1
-                                                    td.td-number
-                                                        small &euro;
-                                                        | 799
-                                                tr
-                                                    td(colspan='5')
-                                                    td.td-total
-                                                        | Total
-                                                    td.td-price
-                                                        small &euro;
-                                                        | 2,346
-                footer.footer
-                    .container-fluid
-                        nav
-                            ul
-                                li
-                                    a(href='https://www.creative-tim.com')
-                                        | Creative Tim
-                                li
-                                    a(href='http://presentation.creative-tim.com')
-                                        | About Us
-                                li
-                                    a(href='http://blog.creative-tim.com')
-                                        | Blog
-                        #copyright.copyright
-                            | &copy;
-                            script.
-                                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                            | , Designed by
-                            a(href='https://www.invisionapp.com' target='_blank') Invision
-                            | . Coded by
-                            a(href='https://www.creative-tim.com' target='_blank') Creative Tim
-                            | .
+extends partials/_sidebar
+block mainPanel
+    nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.bg-primary
+        .container-fluid
+            .navbar-wrapper
+                .navbar-toggle
+                    button.navbar-toggler(type='button')
+                        span.navbar-toggler-bar.bar1
+                        span.navbar-toggler-bar.bar2
+                        span.navbar-toggler-bar.bar3
+                a.navbar-brand(href='#pablo') #{pageName}
+    if(isHeaderLarge)
+        .panel-header.panel-header-lg
+            block pageChart
+    else
+        .panel-header.panel-header-sm
+            block pageChart
+    .content
+        block pageContent
+            .row
+                .col-lg-4.col-md-6
+                    .card.card-chart
+                        .card-header
+                            h5.card-category Active Users
+                            h2.card-title 34,252
+                            .dropdown
+                                button.btn.btn-round.btn-default.dropdown-toggle.btn-simple.btn-icon.no-caret(type='button' data-toggle='dropdown')
+                                    i.now-ui-icons.loader_gear
+                                .dropdown-menu.dropdown-menu-right
+                                    a.dropdown-item(href='#') Action
+                                    a.dropdown-item(href='#') Another action
+                                    a.dropdown-item(href='#') Something else here
+                                    a.dropdown-item.text-danger(href='#') Remove Data
+                        .card-body
+                            .chart-area
+                                canvas#activeUsers
+                            .table-responsive
+                                table.table
+                                    tbody
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/US.png')
+                                            td USA
+                                            td.text-right
+                                                | 2.920
+                                            td.text-right
+                                                | 53.23%
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/DE.png')
+                                            td Germany
+                                            td.text-right
+                                                | 1.300
+                                            td.text-right
+                                                | 20.43%
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/AU.png')
+                                            td Australia
+                                            td.text-right
+                                                | 760
+                                            td.text-right
+                                                | 10.35%
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/GB.png')
+                                            td United Kingdom
+                                            td.text-right
+                                                | 690
+                                            td.text-right
+                                                | 7.87%
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/RO.png')
+                                            td Romania
+                                            td.text-right
+                                                | 600
+                                            td.text-right
+                                                | 5.94%
+                                        tr
+                                            td
+                                                .flag
+                                                    img(src='../assets/img/BR.png')
+                                            td Brasil
+                                            td.text-right
+                                                | 550
+                                            td.text-right
+                                                | 4.34%
+                        .card-footer
+                            .stats
+                                i.now-ui-icons.arrows-1_refresh-69
+                                |  Just Updated
+                .col-lg-4.col-md-6
+                    .card.card-chart
+                        .card-header
+                            h5.card-category Summer Email Campaign
+                            h2.card-title 55,300
+                            .dropdown
+                                button.btn.btn-round.btn-default.dropdown-toggle.btn-simple.btn-icon.no-caret(type='button' data-toggle='dropdown')
+                                    i.now-ui-icons.loader_gear
+                                .dropdown-menu.dropdown-menu-right
+                                    a.dropdown-item(href='#') Action
+                                    a.dropdown-item(href='#') Another action
+                                    a.dropdown-item(href='#') Something else here
+                                    a.dropdown-item.text-danger(href='#') Remove Data
+                        .card-body
+                            .chart-area
+                                canvas#emailsCampaignChart
+                            .card-progress
+                                .progress-container
+                                    span.progress-badge Delivery Rate
+                                    .progress
+                                        .progress-bar(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 90%;')
+                                            span.progress-value 90%
+                                .progress-container.progress-success
+                                    span.progress-badge Open Rate
+                                    .progress
+                                        .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 60%;')
+                                            span.progress-value 60%
+                                .progress-container.progress-info
+                                    span.progress-badge Click Rate
+                                    .progress
+                                        .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 12%;')
+                                            span.progress-value 12%
+                                .progress-container.progress-warning
+                                    span.progress-badge Hard Bounce
+                                    .progress
+                                        .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 5%;')
+                                            span.progress-value 5%
+                                .progress-container.progress-danger
+                                    span.progress-badge Spam Report
+                                    .progress
+                                        .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 0.11%;')
+                                            span.progress-value 0.11%
+                        .card-footer
+                            .stats
+                                i.now-ui-icons.arrows-1_refresh-69
+                                |  Just Updated
+                .col-lg-4.col-md-6
+                    .card.card-chart
+                        .card-header
+                            h5.card-category Active Countries
+                            h2.card-title 105
+                        .card-body
+                            .chart-area
+                                canvas#activeCountries
+                            #worldMap.map
+                        .card-footer
+                            .stats
+                                i.now-ui-icons.ui-2_time-alarm
+                                |  Last 7 days
+            .row
+                .col-md-12
+                    .card
+                        .card-header
+                            h4.card-title  Best Selling Products
+                        .card-body
+                            .table-responsive
+                                table.table.table-shopping
+                                    thead
+                                        th.text-center
+                                        th
+                                            | Product
+                                        th
+                                            | Color
+                                        th
+                                            | Size
+                                        th.text-right
+                                            | Price
+                                        th.text-right
+                                            | Qty
+                                        th.text-right
+                                            | Amount
+                                    tbody
+                                        tr
+                                            td
+                                                .img-container
+                                                    img(src='../assets/img/saint-laurent.jpg' alt='...')
+                                            td.td-name
+                                                a(href='#jacket') Suede Biker Jacket
+                                                br
+                                                small by Saint Laurent
+                                            td
+                                                | Black
+                                            td
+                                                | M
+                                            td.td-number
+                                                small &euro;
+                                                | 3,390
+                                            td.td-number
+                                                | 1
+                                            td.td-number
+                                                small &euro;
+                                                | 549
+                                        tr
+                                            td
+                                                .img-container
+                                                    img(src='../assets/img/balmain.jpg' alt='...')
+                                            td.td-name
+                                                a(href='#pants') Jersey T-Shirt
+                                                br
+                                                small by Balmain
+                                            td
+                                                | Black
+                                            td
+                                                | M
+                                            td.td-number
+                                                small &euro;
+                                                | 499
+                                            td.td-number
+                                                | 2
+                                            td.td-number
+                                                small &euro;
+                                                | 998
+                                        tr
+                                            td
+                                                .img-container
+                                                    img(src='../assets/img/prada.jpg' alt='...')
+                                            td.td-name
+                                                a(href='#nothing') Slim-Fit Swim Short
+                                                br
+                                                small by Prada
+                                            td
+                                                | Red
+                                            td
+                                                | M
+                                            td.td-number
+                                                small &euro;
+                                                | 200
+                                            td.td-number
+                                                | 1
+                                            td.td-number
+                                                small &euro;
+                                                | 799
+                                        tr
+                                            td(colspan='5')
+                                            td.td-total
+                                                | Total
+                                            td.td-price
+                                                small &euro;
+                                                | 2,346
 
 

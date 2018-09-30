@@ -1,0 +1,31 @@
+extends ../_bootstrap
+block append styles
+    link(rel="stylesheet", href="assets/css/now-ui-dashboard.css")
+
+block body
+    .sidebar-mini
+        .wrapper
+            .sidebar(data-color='orange')
+                //
+                    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                block sidebar
+                    +projectLogo()
+                    .sidebar-wrapper
+                        +userIcon()(userImg = '../assets/img/james.jpg', userName = 'Anurag Deshpande')
+                            +menu()
+                                +menuItem-miniIcon(linkName = "My Profile", redirectionURL = "#", isActive = false, iconText = "MP")
+                                +menuItem-miniIcon(linkName = "Edit Profile", redirectionURL = "#", isActive = false, iconText = "EP")
+                                +menuItem-miniIcon(linkName = "Settings", redirectionURL = "#", isActive = false, iconText = "S")
+                        +menu
+                            +menuItem()(linkName = 'Dashboard', redirectionURL = '/dashboard', isActive = isDashboardActive, isSubMenu = false, class = "icon-apartment")
+                            +menuItem()(linkName = "Release Management", redirectionURL = "/releaseManagement", isActive = isReleaseManagementActive, class = "icon-presentation")
+                            +subMenu()(linkName = "Pages", subMenuID = "PagesDropDown")
+                                +menuItem-miniIcon(linkName = "Pricing", redirectionURL = "#", isActive = false, iconText = "P")
+                                +menuItem-miniIcon(linkName = "RTL Support", redirectionURL = "#", isActive = false, iconText = "RS")
+                                +menuItem-miniIcon(linkName = "Timeline", redirectionURL = "#", isActive = false, iconText = "T")
+                                +menuItem-miniIcon(linkName = "Login", redirectionURL = "#", isActive = false, iconText = "L")
+                                +menuItem-miniIcon(linkName = "Register", redirectionURL = "#", isActive = false, iconText = "R")
+                                +menuItem-miniIcon(linkName = "Lock Screen", redirectionURL = "#", isActive = false, iconText = "LS")
+                                +menuItem-miniIcon(linkName = "User Profile", redirectionURL = "#", isActive = false, iconText = "UP")
+            .main-panel
+                block mainPanel

@@ -3092,6 +3092,13 @@ Created using IcoMoon - icomoon.io
   content: "\ea10"
 }
 
+.now-ui-icons.icon-name-card:before {
+    content: "\ea15"
+}
+
+.now-ui-icons.icon-presentation:before {
+    content: "\ea16"
+}
 
 .all-icons .font-icon-detail {
   text-align: center;

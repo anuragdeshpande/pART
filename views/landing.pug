@@ -1,1 +1,8 @@
 extends ../public/assets/_dashboard
+block variables
+    - var isDashboardActive = true
+    - var pageName = "Dashboard"
+    - var isHeaderLarge = true
+
+block pageChart
+    canvas#bigDashboardChart
