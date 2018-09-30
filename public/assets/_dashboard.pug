@@ -25,118 +25,6 @@ block body
                             +menuItem-miniIcon(linkName = "Register", redirectionURL = "#", isActive = false, iconText = "R")
                             +menuItem-miniIcon(linkName = "Lock Screen", redirectionURL = "#", isActive = false, iconText = "LS")
                             +menuItem-miniIcon(linkName = "User Profile", redirectionURL = "#", isActive = false, iconText = "UP")
-                        li
-                            a(data-toggle='collapse' href='#componentsExamples')
-                                i.now-ui-icons.education_atom
-                                p
-                                    | Components
-                                    b.caret
-                            #componentsExamples.collapse
-                                ul.nav
-                                    li
-                                        a(href='../examples/components/buttons.html')
-                                            span.sidebar-mini-icon B
-                                            span.sidebar-normal  Buttons
-                                    li
-                                        a(href='../examples/components/grid.html')
-                                            span.sidebar-mini-icon G
-                                            span.sidebar-normal  Grid System
-                                    li
-                                        a(href='../examples/components/panels.html')
-                                            span.sidebar-mini-icon P
-                                            span.sidebar-normal  Panels
-                                    li
-                                        a(href='../examples/components/sweet-alert.html')
-                                            span.sidebar-mini-icon SA
-                                            span.sidebar-normal  Sweet Alert
-                                    li
-                                        a(href='../examples/components/notifications.html')
-                                            span.sidebar-mini-icon N
-                                            span.sidebar-normal  Notifications
-                                    li
-                                        a(href='../examples/components/icons.html')
-                                            span.sidebar-mini-icon I
-                                            span.sidebar-normal  Icons
-                                    li
-                                        a(href='../examples/components/typography.html')
-                                            span.sidebar-mini-icon T
-                                            span.sidebar-normal  Typography
-                        li
-                            a(data-toggle='collapse' href='#formsExamples')
-                                i.now-ui-icons.files_single-copy-04
-                                p
-                                    | Forms
-                                    b.caret
-                            #formsExamples.collapse
-                                ul.nav
-                                    li
-                                        a(href='../examples/forms/regular.html')
-                                            span.sidebar-mini-icon RF
-                                            span.sidebar-normal  Regular Forms
-                                    li
-                                        a(href='../examples/forms/extended.html')
-                                            span.sidebar-mini-icon EF
-                                            span.sidebar-normal  Extended Forms
-                                    li
-                                        a(href='../examples/forms/validation.html')
-                                            span.sidebar-mini-icon V
-                                            span.sidebar-normal  Validation Forms
-                                    li
-                                        a(href='../examples/forms/wizard.html')
-                                            span.sidebar-mini-icon W
-                                            span.sidebar-normal  Wizard
-                        li
-                            a(data-toggle='collapse' href='#tablesExamples')
-                                i.now-ui-icons.design_bullet-list-67
-                                p
-                                    | Tables
-                                    b.caret
-                            #tablesExamples.collapse
-                                ul.nav
-                                    li
-                                        a(href='../examples/tables/regular.html')
-                                            span.sidebar-mini-icon RT
-                                            span.sidebar-normal  Regular Tables
-                                    li
-                                        a(href='../examples/tables/extended.html')
-                                            span.sidebar-mini-icon ET
-                                            span.sidebar-normal  Extended Tables
-                                    li
-                                        a(href='../examples/tables/datatables.net.html')
-                                            span.sidebar-mini-icon DT
-                                            span.sidebar-normal  DataTables.net
-                        li
-                            a(data-toggle='collapse' href='#mapsExamples')
-                                i.now-ui-icons.location_pin
-                                p
-                                    | Maps
-                                    b.caret
-                            #mapsExamples.collapse
-                                ul.nav
-                                    li
-                                        a(href='../examples/maps/google.html')
-                                            span.sidebar-mini-icon GM
-                                            span.sidebar-normal  Google Maps
-                                    li
-                                        a(href='../examples/maps/fullscreen.html')
-                                            span.sidebar-mini-icon FM
-                                            span.sidebar-normal  Full Screen Map
-                                    li
-                                        a(href='../examples/maps/vector.html')
-                                            span.sidebar-mini-icon VM
-                                            span.sidebar-normal  Vector Map
-                        li
-                            a(href='../examples/widgets.html')
-                                i.now-ui-icons.objects_diamond
-                                p Widgets
-                        li
-                            a(href='../examples/charts.html')
-                                i.now-ui-icons.business_chart-pie-36
-                                p Charts
-                        li
-                            a(href='../examples/calendar.html')
-                                i.now-ui-icons.media-1_album
-                                p Calendar
             .main-panel
                 // Navbar
                 nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.bg-primary
@@ -183,41 +71,11 @@ block body
                 .panel-header.panel-header-lg
                     canvas#bigDashboardChart
                 .content
-                    .row
-                        .col-md-12
-                            .card.card-stats
-                                .card-body
-                                    .row
-                                        .col-md-3
-                                            .statistics
-                                                .info
-                                                    .icon.icon-primary
-                                                        i.now-ui-icons.ui-2_chat-round
-                                                    h3.info-title 859
-                                                    h6.stats-title Messages
-                                        .col-md-3
-                                            .statistics
-                                                .info
-                                                    .icon.icon-success
-                                                        i.now-ui-icons.business_money-coins
-                                                    h3.info-title
-                                                        small $
-                                                        | 3,521
-                                                    h6.stats-title Today Revenue
-                                        .col-md-3
-                                            .statistics
-                                                .info
-                                                    .icon.icon-info
-                                                        i.now-ui-icons.users_single-02
-                                                    h3.info-title 562
-                                                    h6.stats-title Customers
-                                        .col-md-3
-                                            .statistics
-                                                .info
-                                                    .icon.icon-danger
-                                                        i.now-ui-icons.objects_support-17
-                                                    h3.info-title 353
-                                                    h6.stats-title Support Requests
+                    +pillBox()
+                        +pillBoxCard()(cardSize = 3, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
+                        +pillBoxCard-smallIcon(cardSize = 3, iconColor = "icon-success", iconName = "icon-apartment", cardTitle = "Today Revenue", cardValue = "3,521", valueIcon = "$")
+                        +pillBoxCard()(cardSize = 3, iconColor = "icon-primary", iconName = "icon-apartment", cardTitle = "Messages", cardValue = "859")
+                        +pillBoxCard-smallIcon(cardSize = 3, iconColor = "icon-success", iconName = "icon-apartment", cardTitle = "Today Revenue", cardValue = "3,521", valueIcon = "$")
                     .row
                         .col-lg-4.col-md-6
                             .card.card-chart

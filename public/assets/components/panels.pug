@@ -1,42 +1,82 @@
 //- panel
 mixin panel(type,title)
-	.panel(class=`panel-${type}`)
-		if title !== undefined
-			.panel-heading
-				h3.panel-title= title
-			.panel-body
-				block
-		else
-			.panel-body
-				block
+    .panel(class=`panel-${type}`)
+        if title !== undefined
+            .panel-heading
+                h3.panel-title= title
+            .panel-body
+                block
+        else
+            .panel-body
+                block
 
 
 //- panel-default
 mixin panel-default(title)
-	+panel("default",title)
-		block
+    +panel("default",title)
+        block
 
 //- panel-primary
 mixin panel-primary(title)
-	+panel("primary",title)
-		block
-		
+    +panel("primary",title)
+        block
+
 //- panel-success
 mixin panel-success(title)
-	+panel("success",title)
-		block
-		
+    +panel("success",title)
+        block
+
 //- panel-info
 mixin panel-info(title)
-	+panel("info",title)
-		block
+    +panel("info",title)
+        block
 
 //- panel-warning
 mixin panel-warning(title)
-	+panel("warning",title)
-		block
-		
+    +panel("warning",title)
+        block
+
 //- panel-danger
 mixin panel-danger(title)
-	+panel("danger",title)
-		block
+    +panel("danger",title)
+        block
+
+mixin pillBox()
+    .row
+        .col-md-12
+            .card.card-stats
+                .card-body
+                    .row
+                        block
+mixin pillBoxCard()
+    - var cardSize = attributes.cardSize
+    - var iconColor = attributes.iconColor
+    - var iconName = attributes.iconName
+    - var cardTitle = attributes.cardTitle
+    - var cardValue = attributes.cardValue
+    div(class = "col-md-"+cardSize)
+        .statistics
+            .info
+                div(class= "icon "+iconColor)
+                    i(class = "now-ui-icons " + iconName)
+                h3.info-title #{cardValue}
+                h6.stats-title #{cardTitle}
+
+
+
+mixin pillBoxCard-smallIcon()
+    - var cardSize = attributes.cardSize
+    - var iconColor = attributes.iconColor
+    - var iconName = attributes.iconName
+    - var cardTitle = attributes.cardTitle
+    - var cardValue = attributes.cardValue
+    - var valueIcon = attributes.valueIcon
+    div(class = "col-md-" + cardSize)
+        .statistics
+            .info
+                div(class= "icon " + iconColor)
+                    i(class = "now-ui-icons " + iconName)
+                h3.info-title
+                    small #{valueIcon}
+                    | #{cardValue}
+                h6.stats-title #{cardTitle}
