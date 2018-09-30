@@ -1,25 +1,107 @@
 //- list-group mixins
 mixin list-group(items)
-	ul.list-group
-	each item, index in items
-		li.list-group-item #{item}
+    ul.list-group
+    each item, index in items
+        li.list-group-item #{item}
 
 mixin list-group-links(items,active)
-	.list-group
-	each item, index in items
-		if(index === active)
-			a.list-group-item.active(href="#{item.url}") #{item.text}
-		else
-			a.list-group-item(href="#{item.url}") #{item.text}
+    .list-group
+    each item, index in items
+        if(index === active)
+            a.list-group-item.active(href="#{item.url}") #{item.text}
+        else
+            a.list-group-item(href="#{item.url}") #{item.text}
 
 mixin list-group-item(url,active)
-	if(active === "true")
-		a.list-group-item.active(href="#{url}")
-			block
-	else
-		a.list-group-item(href="#{url}")
-			block
+    if(active === "true")
+        a.list-group-item.active(href="#{url}")
+            block
+    else
+        a.list-group-item(href="#{url}")
+            block
 
 mixin list-group-custom()
-	.list-group
-		block
+    .list-group
+        block
+
+mixin menu()
+    if(attributes.class)
+        - var className = attributes.class
+        - var id = attributes.id
+        div(class = className id = id)
+            ul.nav
+                block
+    else
+        ul.nav
+            block
+
+mixin menuItem()
+    - var linkName = attributes.linkName
+    - var redirectionURL = attributes.redirectionURL
+    - var isActive = attributes.isActive
+    if(isActive)
+        li.active
+            a(href=redirectionURL)
+                i.now-ui-icons(class!=attributes.class)
+                p #{linkName}
+    else
+        li
+            a(href=redirectionURL)
+                i.now-ui-icons(class!=attributes.class)
+                p #{linkName}
+
+
+
+mixin menuItem-miniIcon()
+    - var linkName = attributes.linkName
+    - var redirectionURL = attributes.redirectionURL
+    - var isActive = attributes.isActive
+    - var iconText = attributes.iconText
+    if(isActive)
+        li.active
+            a(href=redirectionURL)
+                span.sidebar-mini-icon #{iconText}
+                span.sidebar-normal  #{linkName}
+    else
+        li
+            a(href=redirectionURL)
+                span.sidebar-mini-icon #{iconText}
+                span.sidebar-normal  #{linkName}
+
+
+
+mixin subMenu()
+    - var linkName = attributes.linkName
+    - var subMenuID = attributes.subMenuID
+    li
+        a(data-toggle='collapse' href='#' + subMenuID)
+            i.now-ui-icons(class!=attributes.class)
+            p
+                | #{linkName}
+                b.caret
+        div(id = subMenuID).collapse
+            ul.nav
+                block
+
+
+mixin userIcon()
+    - var userImg = attributes.userImg
+    - var userName = attributes.userName
+    .user
+        .photo
+            img(src= userImg)
+        .info
+            a.collapsed(data-toggle='collapse' href='#userMenu')
+                span
+                    | #{userName}
+                    b.caret
+            .clearfix
+            #userMenu.collapse
+                block
+
+mixin projectLogo()
+    .logo
+        a.simple-text.logo-mini(href='/dashboard')
+            | ART
+        a.simple-text.logo-normal(href='/dashboard')
+            | Project ART
